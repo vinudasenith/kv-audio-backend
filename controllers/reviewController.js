@@ -28,7 +28,9 @@ export function getReviews(req, res) {
     if (user == null || user.role != "admin") {
         Review.find({ isApproved: true }).then((reviews) => {
             res.json(reviews);
-        })
+        }).catch((error) => {
+            res.status(500).json({ error: "Failed to fetch reviews" })
+        });
         return
     }
 
@@ -55,7 +57,7 @@ export function deleteReview(req, res) {
             res.json({ message: "Review deleted successsfully" })
         })
             .catch(() => {
-                res.status(500).json({ error: "Review delettion failed" })
+                res.status(500).json({ error: "Review deletion failed" })
             });
 
         return
@@ -65,14 +67,13 @@ export function deleteReview(req, res) {
             Review.deleteOne({ email: email }).then(() => {
                 res.json({ message: "Review deleted successsfully" })
             }).catch(() => {
-                res.status(500).json({ error: "Review delettion failed" })
+                res.status(500).json({ error: "Review deletion failed" })
             });
         } else {
             res.status(403).json({ message: "You are not authorized to perform this action" });
         }
 
     }
-
 
 }
 
