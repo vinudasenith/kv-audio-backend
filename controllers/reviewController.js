@@ -12,7 +12,6 @@ export function addReview(req, res) {
     data.email = req.user.email;
     const newReview = new Review(data)
 
-
     newReview.save()
         .then(() => {
             res.json({ message: "Review added successsfully" })
