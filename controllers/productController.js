@@ -74,3 +74,18 @@ export async function deleteProduct(req, res) {
         res.status(500).json({ message: "Product deletion failed" });
     }
 }
+
+export async function getProduct(req, res) {
+    try {
+        const key = req.params.key;
+        const product = await Product.findOne({ key: key });
+        if (product == null) {
+            res.status(404).json({ message: "Product not found" });
+            return;
+        }
+        res.json(product);
+    } catch (e) {
+        res.status(500).json({ message: "Failed to get product" });
+    }
+}
+
