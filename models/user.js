@@ -15,6 +15,11 @@ const userSchema = new mongoose.Schema({
         required: true,
         default: "customer"
     },
+    isBlocked: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
     firstName: {
         type: String,
         required: true,
@@ -31,11 +36,19 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+
     profilePicture: {
         type: String,
         required: true,
         default: "https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-media-1677509740"
+    },
+
+    emailVerified: {
+        type: Boolean,
+        required: true,
+        default: false
     }
+
 });
 
 const User = mongoose.model("User", userSchema);
