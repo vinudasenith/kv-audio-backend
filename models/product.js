@@ -4,7 +4,8 @@ const productSchema = new mongoose.Schema({
     key: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        set: v => v.trim(),
     },
     name: {
         type: String,
