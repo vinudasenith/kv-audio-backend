@@ -1,9 +1,9 @@
 import Product from "../models/product.js";
 import { isItAdmin } from "./userController.js";
 
+
+//add product
 export async function addProduct(req, res) {
-
-
     if (req.user == null) {
         res.status(401).json({ message: "Please login and try again" })
         return
@@ -25,6 +25,8 @@ export async function addProduct(req, res) {
     }
 
 }
+
+//get products
 export async function getProducts(req, res) {
 
     try {
@@ -42,6 +44,8 @@ export async function getProducts(req, res) {
     }
 }
 
+
+//update product
 export async function updateProduct(req, res) {
     try {
         if (isItAdmin(req)) {
@@ -59,6 +63,8 @@ export async function updateProduct(req, res) {
         res.status(500).json({ error: "Product updation failed" });
     }
 }
+
+//delete product
 export async function deleteProduct(req, res) {
     try {
         if (isItAdmin(req)) {
@@ -75,6 +81,7 @@ export async function deleteProduct(req, res) {
     }
 }
 
+//get product
 export async function getProduct(req, res) {
     try {
         const key = req.params.key;

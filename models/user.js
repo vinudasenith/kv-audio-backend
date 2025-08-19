@@ -43,12 +43,6 @@ const userSchema = new mongoose.Schema({
         default: "https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-media-1677509740"
     },
 
-    emailVerified: {
-        type: Boolean,
-        required: true,
-        default: false
-    }
-
 });
 
 const User = mongoose.model("User", userSchema);

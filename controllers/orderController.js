@@ -2,6 +2,8 @@ import Order from "../models/order.js";
 import Product from "../models/product.js";
 import { isItAdmin, isItCustomer } from "./userController.js";
 
+
+//create order
 export async function createOrder(req, res) {
     try {
         const data = req.body;
@@ -79,6 +81,7 @@ export async function createOrder(req, res) {
     }
 }
 
+//get quote
 export async function getQuote(req, res) {
     try {
         const data = req.body;
@@ -133,6 +136,8 @@ export async function getQuote(req, res) {
     }
 }
 
+
+//get orders
 export async function getOrders(req, res) {
     try {
         if (isItCustomer(req)) {
@@ -153,6 +158,8 @@ export async function getOrders(req, res) {
     }
 }
 
+
+//update order
 export async function approveOrRejectOrder(req, res) {
     try {
         const { orderId } = req.params;
